@@ -1,18 +1,30 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test 1.0.0.0</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A friendly greeting and live world clock." />
+    <title>你好 · World Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Welcome</p>
+      <h1 id="hello-text">你好</h1>
+      <p class="subtitle">Hello! A small page with live time around the world.</p>
+      <button id="color-button" type="button">Change greeting color</button>
 
-<h1>欢迎</h1>
+      <p class="local-time">Your local time <span id="date-time"></span></p>
+      <p class="meta">Page visits in this browser: <strong id="visitor-count"></strong></p>
 
-<div id="clock"></div>
-
-<script src="script.js"></script>
-
-</body>
+      <h2>World time</h2>
+      <ul class="clocks">
+        <li><span class="place">Singapore</span><span id="singapore-time"></span></li>
+        <li><span class="place">United Kingdom</span><span id="uk-time"></span></li>
+        <li><span class="place">New York, United States</span><span id="us-time"></span></li>
+      </ul>
+      <footer>Times update automatically every second.</footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>

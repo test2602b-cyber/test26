@@ -1,82 +1,29 @@
-// ================================
-// 页面初始化
-// ================================
-initPage();
+const colors = ["royalblue", "crimson", "seagreen", "darkorange", "purple"];
+let colorIndex = 0;
+const visits = Number(localStorage.getItem("pageVisits") || 0) + 1;
 
-// 每秒更新时间
-setInterval(updateClock, 1000);
+localStorage.setItem("pageVisits", visits);
+document.getElementById("visitor-count").textContent = visits;
 
-// ================================
-// 初始化页面
-// ================================
-function initPage() {
+document.getElementById("color-button").addEventListener("click", () => {
+  colorIndex = (colorIndex + 1) % colors.length;
+  document.getElementById("hello-text").style.color = colors[colorIndex];
+});
 
-    updateVisitInfo();
-
-    updateClock();
+function formatTime(timeZone, locale) {
+  return new Date().toLocaleString(locale, {
+    timeZone,
+    dateStyle: "medium",
+    timeStyle: "medium",
+  });
 }
 
-// ================================
-// 更新时间
-// ================================
-function updateClock() {
-
-    const now = new Date();
-
-    const time = now.toLocaleTimeString('zh-CN');
-    const date = now.toLocaleDateString('zh-CN');
-
-    const weeks = [
-        "星期日","星期一","星期二",
-        "星期三","星期四","星期五","星期六"
-    ];
-
-    const week = weeks[now.getDay()];
-
-    const timezone =
-        Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    // 取得访问信息
-    let count = localStorage.getItem("visitCount");
-    let lastVisit = localStorage.getItem("lastVisit");
-
-    if (lastVisit == null)
-        lastVisit = "第一次访问";
-
-    document.getElementById("clock").innerHTML =
-    `
-    <h2>${time}</h2>
-
-    <p>📅 ${date}</p>
-
-    <p>📆 ${week}</p>
-
-    <p>🌏 ${timezone}</p>
-
-    <hr>
-
-    <p>👤 第 <b>${count}</b> 次访问</p>
-
-    <p>🕘 上次访问：${lastVisit}</p>
-    `;
+function updateDateTime() {
+  document.getElementById("date-time").textContent = new Date().toLocaleString();
+  document.getElementById("singapore-time").textContent = formatTime("Asia/Singapore", "en-SG");
+  document.getElementById("uk-time").textContent = formatTime("Europe/London", "en-GB");
+  document.getElementById("us-time").textContent = formatTime("America/New_York", "en-US");
 }
 
-// ================================
-// 更新访问信息
-// ================================
-function updateVisitInfo() {
-
-    let count = localStorage.getItem("visitCount");
-
-    if (count == null)
-        count = 1;
-    else
-        count = parseInt(count) + 1;
-
-    localStorage.setItem("visitCount", count);
-
-    localStorage.setItem(
-        "lastVisit",
-        new Date().toLocaleString('zh-CN')
-    );
-}
+updateDateTime();
+setInterval(updateDateTime, 1000);
