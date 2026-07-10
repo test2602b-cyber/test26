@@ -26,13 +26,32 @@ function updateClock() {
         Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     document.getElementById("clock").innerHTML =
-        `
-        <h2>${time}</h2>
-        <p>${date}</p>
-        <p>${week}</p>
-        <p>时区：${timezone}</p>
-        `;
+    `
+    <h2>${time}</h2>
+
+    <p>${date}</p>
+
+    <p>${week}</p>
+
+    <p>🌏 时区：${timezone}</p>
+
+    <hr>
+
+    <p>👤 这是你第 <b>${count}</b> 次访问本网页</p>
+    `;
 }
+
+// ===== 本地访问计数 =====
+let count = localStorage.getItem("visitCount");
+
+if (count === null) {
+    count = 1;
+} else {
+    count = parseInt(count) + 1;
+}
+
+localStorage.setItem("visitCount", count);
+
 
 updateClock();
 
