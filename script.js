@@ -29,15 +29,17 @@ function updateClock() {
     `
     <h2>${time}</h2>
 
-    <p>${date}</p>
+    <p>📅 ${date}</p>
 
-    <p>${week}</p>
+    <p>📆 ${week}</p>
 
     <p>🌏 时区：${timezone}</p>
 
     <hr>
 
-    <p>👤 这是你第 <b>${count}</b> 次访问本网页</p>
+    <p>👤 第 <b>${count}</b> 次访问</p>
+
+    <p>🕘 上次访问：${lastVisit}</p>
     `;
 }
 
@@ -50,9 +52,12 @@ if (count === null) {
     count = parseInt(count) + 1;
 }
 
-localStorage.setItem("visitCount", count);
-
-
 updateClock();
+
+// 保存本次访问时间，供下次显示
+localStorage.setItem(
+    "lastVisit",
+    now.toLocaleString('zh-CN')
+);
 
 setInterval(updateClock, 1000);
