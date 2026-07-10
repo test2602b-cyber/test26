@@ -1,29 +1,47 @@
+// ================================
+// 页面初始化
+// ================================
+initPage();
+
+// 每秒更新时间
+setInterval(updateClock, 1000);
+
+// ================================
+// 初始化页面
+// ================================
+function initPage() {
+
+    updateVisitInfo();
+
+    updateClock();
+}
+
+// ================================
+// 更新时间
+// ================================
 function updateClock() {
 
     const now = new Date();
 
-    // 时间
     const time = now.toLocaleTimeString('zh-CN');
-
-    // 日期
     const date = now.toLocaleDateString('zh-CN');
 
-    // 星期
     const weeks = [
-        "星期日",
-        "星期一",
-        "星期二",
-        "星期三",
-        "星期四",
-        "星期五",
-        "星期六"
+        "星期日","星期一","星期二",
+        "星期三","星期四","星期五","星期六"
     ];
 
     const week = weeks[now.getDay()];
 
-    // 时区
     const timezone =
         Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    // 取得访问信息
+    let count = localStorage.getItem("visitCount");
+    let lastVisit = localStorage.getItem("lastVisit");
+
+    if (lastVisit == null)
+        lastVisit = "第一次访问";
 
     document.getElementById("clock").innerHTML =
     `
@@ -33,7 +51,7 @@ function updateClock() {
 
     <p>📆 ${week}</p>
 
-    <p>🌏 时区：${timezone}</p>
+    <p>🌏 ${timezone}</p>
 
     <hr>
 
@@ -43,21 +61,22 @@ function updateClock() {
     `;
 }
 
-// ===== 本地访问计数 =====
-let count = localStorage.getItem("visitCount");
+// ================================
+// 更新访问信息
+// ================================
+function updateVisitInfo() {
 
-if (count === null) {
-    count = 1;
-} else {
-    count = parseInt(count) + 1;
+    let count = localStorage.getItem("visitCount");
+
+    if (count == null)
+        count = 1;
+    else
+        count = parseInt(count) + 1;
+
+    localStorage.setItem("visitCount", count);
+
+    localStorage.setItem(
+        "lastVisit",
+        new Date().toLocaleString('zh-CN')
+    );
 }
-
-updateClock();
-
-// 保存本次访问时间，供下次显示
-localStorage.setItem(
-    "lastVisit",
-    now.toLocaleString('zh-CN')
-);
-
-setInterval(updateClock, 1000);
