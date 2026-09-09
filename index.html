@@ -1,30 +1,43 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A friendly greeting and live world clock." />
-    <title>你好 · World Clock</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main>
-      <p class="eyebrow">Welcome</p>
-      <h1 id="hello-text">你好</h1>
-      <p class="subtitle">Hello! A small page with live time around the world.</p>
-      <button id="color-button" type="button">Change greeting color</button>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelloCoffee ☕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">☕ HelloCoffee</div>
+    <nav>
+      <a href="#menu">菜单</a>
+      <a href="#orders">订单</a>
+      <a href="#about">关于</a>
+    </nav>
+    <button id="cartButton" class="cart-button">🛒 <span id="cartCount">0</span></button>
+  </header>
 
-      <p class="local-time">Your local time <span id="date-time"></span></p>
-      <p class="meta">Page visits in this browser: <strong id="visitor-count"></strong></p>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GOOD COFFEE · GOOD DAY</p>
+        <h1>今天，来一杯<br><span>属于你的咖啡。</span></h1>
+        <p class="hero-text">新鲜现磨咖啡，简单点单，快乐马上到来。</p>
+        <a class="primary-button" href="#menu">开始点单 ☕</a>
+      </div>
+      <div class="hero-cup">☕</div>
+    </section>
 
-      <h2>World time</h2>
-      <ul class="clocks">
-        <li><span class="place">Singapore</span><span id="singapore-time"></span></li>
-        <li><span class="place">United Kingdom</span><span id="uk-time"></span></li>
-        <li><span class="place">New York, United States</span><span id="us-time"></span></li>
-      </ul>
-      <footer>Times update automatically every second.</footer>
-    </main>
-    <script src="script.js"></script>
-  </body>
-</html>
+    <section id="menu" class="section">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">OUR MENU</p>
+          <h2>今日咖啡</h2>
+        </div>
+        <span id="menuHint">选择你喜欢的咖啡</span>
+      </div>
+      <div id="menuGrid" class="menu-grid"></div>
+    </section>
+
+    <section id="orders" class="section order-section">
+      <div class="section-title">
