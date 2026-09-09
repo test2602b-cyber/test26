@@ -1,7 +1,6 @@
 const colors = ["royalblue", "crimson", "seagreen", "darkorange", "purple"];
 let colorIndex = 0;
-const visits = Number(localStorage.getItem("pageVisits") || 0) + 1;
-
+const vi
 localStorage.setItem("pageVisits", visits);
 document.getElementById("visitor-count").textContent = visits;
 
