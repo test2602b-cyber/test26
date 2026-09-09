@@ -41,3 +41,49 @@
 
     <section id="orders" class="section order-section">
       <div class="section-title">
+        <div>
+          <p class="eyebrow">ORDER</p>
+          <h2>最近订单</h2>
+        </div>
+      </div>
+      <div id="orderHistory" class="orders-empty">还没有订单。点一杯咖啡吧 ☕</div>
+    </section>
+
+    <section id="about" class="about">
+      <div>
+        <p class="eyebrow">HELLOCOFFEE</p>
+        <h2>小店 · 好咖啡 · 好心情</h2>
+      </div>
+      <p>这是 HelloCoffee V1 演示版。下一步可以连接 C# Server + SQLite，变成真正的咖啡店经营系统。</p>
+    </section>
+  </main>
+
+  <aside id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+      <h2>🛒 我的购物车</h2>
+      <button id="closeCart" class="icon-button">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total-row"><span>合计</span><strong id="cartTotal">$0.00</strong></div>
+      <button id="checkoutButton" class="checkout-button">确认下单</button>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <div id="successModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="success-icon">✓</div>
+      <p class="eyebrow">ORDER CONFIRMED</p>
+      <h2>下单成功！</h2>
+      <p>您的订单号是</p>
+      <strong id="orderNumber">#1001</strong>
+      <p class="modal-total">订单金额：<span id="modalTotal">$0.00</span></p>
+      <button id="continueButton" class="primary-button">继续点单</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
